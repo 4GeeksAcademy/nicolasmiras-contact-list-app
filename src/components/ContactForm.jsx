@@ -24,10 +24,10 @@ export default function ContactForm({ initialData, onSubmit }) {
   return (
     <form onSubmit={handleSubmit} className="p-3 bg-light rounded">
       <div className="mb-3">
-        <label className="form-label">Full Name</label>
+        <label className="form-label">Name</label>
         <input
-          name="full_name"
-          value={form.full_name}
+          name="name"
+          value={form.name}
           onChange={handleChange}
           className="form-control"
           type="text"

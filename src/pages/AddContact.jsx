@@ -7,13 +7,12 @@ export const AddContact = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  // Busca el contacto para editar (solo si hay id)
+  // Busca el contacto para editar
   const contactToEdit = store.contacts.find(c => c.id === Number(id));
 
   async function handleSubmit(form) {
     if (id) {
-      // EDITAR contacto (PUT)
-      const resp = await fetch(`https://playground.4geeks.com/contact/${id}`, {
+      const resp = await fetch(`https://playground.4geeks.com/contact/agendas/Nicolas/contacts/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -22,11 +21,9 @@ export const AddContact = () => {
         }),
       });
       const data = await resp.json();
-      // Usa el objeto completo de la API por si hay cambios
       dispatch({ type: "edit_contact", payload: data });
     } else {
-      // CREAR contacto (POST)
-      const resp = await fetch("https://playground.4geeks.com/contact", {
+      const resp = await fetch("https://playground.4geeks.com/contact/agendas/Nicolas/contacts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -35,9 +32,7 @@ export const AddContact = () => {
         }),
       });
       const data = await resp.json();
-      // Usa el objeto completo de la API
       dispatch({ type: "add_contact", payload: data });
-
     }
     navigate("/");
   }
@@ -52,5 +47,4 @@ export const AddContact = () => {
     </div>
   );
 };
-
 

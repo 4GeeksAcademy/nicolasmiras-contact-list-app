@@ -12,7 +12,7 @@ export default function ContactCard({ contact, onDelete }) {
           className="rounded-circle me-3"
         />
         <div className="flex-grow-1">
-          <h5 className="card-title mb-1">{contact.full_name}</h5>
+          <h5 className="card-title mb-1">{contact.name}</h5>
           <p className="mb-1">{contact.email}</p>
           <p className="mb-1">{contact.phone}</p>
           <p className="mb-0">{contact.address}</p>

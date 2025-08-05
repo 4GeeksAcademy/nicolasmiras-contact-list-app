@@ -13,13 +13,19 @@ export const Home = () => {
 
 
   function handleDelete(id) {
-    fetch(`https://playground.4geeks.com/contact/${id}`, { method: "DELETE" });
-    dispatch({ type: "delete_contact", payload: id });
+    fetch(`https://playground.4geeks.com/contact/agendas/Nicolas/contacts/${id}`, { 
+      method: "DELETE" 
+    })
+    .then(response => {
+      if (response.ok) {
+        dispatch({ type: "delete_contact", payload: id });
+      }
+    });
   }
 
   return (
     <div className="container my-4">
-      <h2 className="mb-4">Contact List</h2>
+      <h2 className="mb-4">Nicolás Agenda</h2>
       {store.contacts.length === 0 ? (
         <p>No hay contactos</p>
       ) : (
